@@ -99,10 +99,12 @@ template <class T>
 void List<T>::RemoveNode(Node* pNode) {
     pNode->prev->next = pNode->next;
     pNode->next->prev = pNode->prev;
+    --size;
     delete pNode;
 }
 template <class T>
 void List<T>::LinkNode(Node* pNode){
     pNode->prev->next = pNode;
     pNode->next->prev = pNode;
+    ++size;
 }
