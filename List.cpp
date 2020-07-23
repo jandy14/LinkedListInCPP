@@ -97,6 +97,7 @@ void List<T>::Clear() {
 }
 template <class T>
 void List<T>::RemoveNode(Node* pNode) {
+    if(size == 0) return;
     pNode->prev->next = pNode->next;
     pNode->next->prev = pNode->prev;
     --size;
