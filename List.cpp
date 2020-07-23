@@ -52,6 +52,7 @@ void List<T>::PushBack(const T& pItem) {
 }
 template <class T>
 T List<T>::PopFront() {
+    if(size == 0) return nullptr;
     Node* node = begin.next;
     T tmp = node->item;
     RemoveNode(node);
@@ -59,6 +60,7 @@ T List<T>::PopFront() {
 }
 template <class T>
 T List<T>::PopBack() {
+    if(size == 0) return nullptr;
     Node* node = end.prev;
     T tmp = node->item;
     RemoveNode(node);
@@ -80,6 +82,7 @@ void List<T>::Insert(List<T>::Iterator& pIter, const T& pItem) {
 }
 template <class T>
 T List<T>::Erase(List<T>::Iterator& pIter) {
+    if(size == 0) return nullptr;
     Node* node = pIter.current;
     pIter.current = (pIter.current)->prev; //for Convenience
     T tmp = node->item;
@@ -97,7 +100,6 @@ void List<T>::Clear() {
 }
 template <class T>
 void List<T>::RemoveNode(Node* pNode) {
-    if(size == 0) return;
     pNode->prev->next = pNode->next;
     pNode->next->prev = pNode->prev;
     --size;
